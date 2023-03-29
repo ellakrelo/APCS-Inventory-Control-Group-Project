@@ -20,6 +20,7 @@ public class InventoryRunner
 			System.out.println("\t 1) Customer");
 			System.out.println("\t 2) Employee");
 			intInput = userIntInput.nextInt();
+			System.out.println();
 			
 			if(intInput == 1)
 				{
@@ -43,15 +44,17 @@ public class InventoryRunner
 		{
 			System.out.println("Please enter your password");
 			input = userInput.nextLine();
+			System.out.println();
 			
 			if(password.equals(input))
 				{
-					//employee selection
+					Employee.employeeMainMenu();
 				}
 			else
 				{
 					System.out.println("That was not correct. Would you like to try again?\n\t 1) Yes\n\t 2) No");
 					intInput = userIntInput.nextInt();
+					System.out.println();
 					
 					if(intInput == 1)
 						{

@@ -2,7 +2,7 @@
 148901 Wireless-Mouse 40 20 10 
 456250 Phone-Case 50 12 4
 309124 Guitar 10 200 140 
-567893 Televsion(43in) 20 350 220 
+567893 Television(43in) 20 350 220 
 125978 Laptop 15 500 350 
 745213 Airpods 30 120 60
 845456 Perfume 20 60 20
