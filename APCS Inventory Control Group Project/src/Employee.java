@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.*;
 
 public class Employee
 	{
@@ -7,8 +10,10 @@ public class Employee
 		static Scanner userIntInput = new Scanner(System.in);
 		static int intInput = 0;
 		static String input = "";
+		static Scanner inventory;
+		static ArrayList<Item> inventoryArray = new ArrayList<Item>();
 		
-		public static void employeeMainMenu()
+		public static void employeeMainMenu() throws IOException
 		{
 			System.out.println("Welcome valued employee! What would you like to do next?\n\t 1)List Inventory\n\t 2)View the accounting module\n\t 3)Log Out");
 			intInput = userIntInput.nextInt();
@@ -43,18 +48,40 @@ public class Employee
 				}
 			else
 				{
-					System.out.println("I'm sorry, that is not an acceptable answer. What wouuld you like to do next?");
+					System.out.println("I'm sorry, that is not an acceptable answer.");
+					System.out.println();
+					input = userInput.nextLine();
+					employeeMainMenu();
+					
 				}
 		}
 
 		private static void accountingModule()
 			{
 
-				
+				//tracks expenses 
+				//show bottom line
 			}
 
-		private static void listInventory()
+		private static void listInventory() throws IOException
 			{
+
+				inventory = new Scanner(new File("groupProject.txt"));
 				
+				while(inventory.hasNext())
+					{
+						long sku = inventory.nextLong();
+						String name = inventory.next();
+						int amount = inventory.nextInt();
+						int retailCost = inventory.nextInt();
+						int wholesaleCost = inventory.nextInt();
+						
+						inventoryArray.add(new Item(sku, name, amount, retailCost, wholesaleCost));
+					}
+				
+				for(Item i : inventoryArray)
+					{
+						System.out.println(i.getName() + " " + i.getAmount() + " " + i.getRetailCost());
+					}
 			}
 	}
