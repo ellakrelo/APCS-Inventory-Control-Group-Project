@@ -70,7 +70,7 @@ public class Employee
 				
 				while(inventory.hasNext())
 					{
-						long sku = inventory.nextLong();
+						int sku = inventory.nextInt();
 						String name = inventory.next();
 						int amount = inventory.nextInt();
 						int retailCost = inventory.nextInt();
@@ -81,7 +81,7 @@ public class Employee
 				
 				for(Item i : inventoryArray)
 					{
-						System.out.println(i.getName() + " " + i.getAmount() + " " + i.getRetailCost());
+						System.out.println(i.getName() + " " + i.getNumber() + " " + i.getRetailCost());
 					}
 			}
 	}
