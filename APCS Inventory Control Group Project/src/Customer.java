@@ -4,7 +4,7 @@ public class Customer
 	{
 		static Scanner userInput = new Scanner(System.in);
 		
-		public void inventory()
+		public static void inventory()
 			{
 				System.out.println("Current Inventory: ");
 				System.out.println();
@@ -16,17 +16,27 @@ public class Customer
 				searchCatalog(search);
 			}
 		
-		public void searchCatalog(String word)
+		public static void searchCatalog(String word)
 			{
 				String temp = "cat";
 				String temp1 = "catalog";
 				String temp2 = "vacation diary";
 				
-				for(int i = 0; i < word.length(); i++)
+				// loops
+				String name = temp2;
+				
+				for(int i = 0; i < name.length(); i++) 
 					{
-						if(word.substring(i+1) != null && word.substring(i+2) != null) 
+						int wordLength = word.length();
+						
+						if(i+wordLength <= name.length()) 
 							{
-								
+							
+							if(name.substring(i, i+wordLength).equals(word)) 
+								{
+									System.out.println("Check");
+									break;
+								}
 							}
 					}
 			}
