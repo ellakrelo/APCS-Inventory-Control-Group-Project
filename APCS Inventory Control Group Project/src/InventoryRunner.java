@@ -24,7 +24,7 @@ public class InventoryRunner
 			
 			if(intInput == 1)
 				{
-					//customer selection
+					Customer.inventory();
 				}
 			else if(intInput == 2)
 				{
