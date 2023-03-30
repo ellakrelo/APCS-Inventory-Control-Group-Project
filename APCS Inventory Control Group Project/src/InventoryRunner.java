@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 
 public class InventoryRunner
@@ -9,12 +10,12 @@ public class InventoryRunner
 		static String input = "";
 		static String password = "totallyStrongPassword";
 		
-		public static void main(String[] args)
+		public static void main(String[] args) throws IOException
 			{
 				select();
 			}
 		
-		public static void select()
+		public static void select() throws IOException
 		{
 			System.out.println("Welcome! Are you a customer or an employee?");
 			System.out.println("\t 1) Customer");
@@ -40,7 +41,7 @@ public class InventoryRunner
 			
 		}
 		
-		public static void password()
+		public static void password() throws IOException
 		{
 			System.out.println("Please enter your password");
 			input = userInput.nextLine();
