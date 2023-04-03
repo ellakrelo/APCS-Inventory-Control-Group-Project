@@ -6,7 +6,7 @@ public class Item
 	private int number;
 	private int retailCost;
 	private int unitCost;
-	//pojo for item
+	//pojo for item now 
 	public Item(int s, String n, int num, int retC, int unC)
 		{
 		sku = s;
