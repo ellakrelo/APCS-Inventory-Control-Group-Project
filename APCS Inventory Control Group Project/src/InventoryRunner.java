@@ -12,6 +12,7 @@ public class InventoryRunner
 		
 		public static void main(String[] args) throws IOException
 			{
+				InventoryList.fillList();
 				select();
 			}
 		

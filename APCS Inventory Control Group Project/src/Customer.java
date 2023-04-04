@@ -7,6 +7,15 @@ public class Customer
 		public static void inventory()
 			{
 				System.out.println("Current Inventory: ");
+				System.out.println("------------------------------------------------------------------------------------");
+				for(int i = 0; i < InventoryList.list.size(); i++)
+					{
+					System.out.println("#" + i + ": " + InventoryList.list.get(i).getName() + " -- $" + InventoryList.list.get(i).getRetailCost());
+					System.out.println("Quantity: " + InventoryList.list.get(i).getNumber() );
+					System.out.println("SKU:" + InventoryList.list.get(i).getSku());
+					System.out.println("------------------------------------------------------------------------------------");
+					
+					}
 				System.out.println();
 				
 				// reads text file
