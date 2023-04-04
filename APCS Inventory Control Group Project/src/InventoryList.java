@@ -1,11 +1,15 @@
+
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
 public class InventoryList
 	{
+
 	static Scanner file;
 	static ArrayList<Item> list = new ArrayList<Item>();
 	
@@ -24,6 +28,5 @@ public class InventoryList
 	        int manCost = file.nextInt();
 	        list.add(new Item(sku, name, number, retailCost, manCost));
 	        }
-
 		}
 	}
