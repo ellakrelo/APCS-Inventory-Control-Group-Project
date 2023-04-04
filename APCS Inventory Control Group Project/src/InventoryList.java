@@ -22,11 +22,11 @@ public class InventoryList
 	    	{
 	        int sku = file.nextInt();
 	        String name = file.next();
-	        name.replaceAll("[\\s\\-()]", " ");
+	        String editName = name.replaceAll("[\\s\\-()]", " ");
 	        int number = file.nextInt();
 	        int retailCost = file.nextInt();
 	        int manCost = file.nextInt();
-	        list.add(new Item(sku, name, number, retailCost, manCost));
+	        list.add(new Item(sku, editName, number, retailCost, manCost));
 	        }
 		}
 	}
