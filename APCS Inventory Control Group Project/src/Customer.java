@@ -55,10 +55,10 @@ public class Customer
 				System.out.println("Search: ");
 				String word = userStringInput.nextLine();
 				
-				int i = 1;
-				for(Item x : InventoryList.list)
+				int x = 0;
+				for(int i = 0; i < InventoryList.list.size(); i++)
 					{
-						String name = x.getName().toLowerCase();
+						String name = InventoryList.list.get(i).getName().toLowerCase();
 						
 						
 						for(int j = 0; j < name.length(); j++)
@@ -70,16 +70,17 @@ public class Customer
 										if(name.substring(j, j + wordLength).equals(word))
 											{
 												
-												System.out.println(i + ". " + x.getName() + " x " + x.getNumber() + " Price: $" + x.getRetailCost());
-												i++;
+												System.out.println(i + ". " + InventoryList.list.get(i).getName() + " x " + InventoryList.list.get(i).getNumber() + " Price: $" + InventoryList.list.get(i).getRetailCost());
+												x++;
 											}
 									}
 							}
 						
 					}
 				int search = userInput.nextInt();
-				if(search > 0 && search < i+1)
+				if(search > 0 && search < x+1)
 					{
+						
 						addToShoppingCart(search-1);
 					}
 				else
