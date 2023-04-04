@@ -26,6 +26,8 @@ public class InventoryRunner
 			
 			if(intInput == 1)
 				{
+					System.out.println("Welcome valued customer!");
+					input = userInput.nextLine();
 					Customer.currentInventory();
 				}
 			else if(intInput == 2)

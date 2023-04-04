@@ -10,18 +10,24 @@ public class Employee
 		static Scanner userIntInput = new Scanner(System.in);
 		static int intInput = 0;
 		static String input = "";
-		static Scanner inventory;
-		static ArrayList<Item> inventoryArray = new ArrayList<Item>();
+		
 		
 		public static void employeeMainMenu() throws IOException
 		{
+			
 			System.out.println("Welcome valued employee! What would you like to do next?\n\t 1)List Inventory\n\t 2)View the accounting module\n\t 3)Log Out");
 			intInput = userIntInput.nextInt();
 			System.out.println();
 			
 			if(intInput == 1)
 				{
-					listInventory();
+					int index = 1;
+					
+					for(Item i : InventoryList.list)
+						{
+							System.out.println(index + ") " + i.getSku() + ": " + i.getName() + " Units Available: " + i.getNumber() + " Unit Cost: $" + i.getUnitCost() + " Retail Cost: " + i.getRetailCost());
+							index++;
+						}
 					input = userInput.nextLine();
 				}
 			else if(intInput == 2)
@@ -63,25 +69,5 @@ public class Employee
 				//show bottom line
 			}
 
-		private static void listInventory() throws IOException
-			{
-
-				inventory = new Scanner(new File("groupProject.txt"));
-				
-				while(inventory.hasNext())
-					{
-						int sku = inventory.nextInt();
-						String name = inventory.next();
-						int amount = inventory.nextInt();
-						int retailCost = inventory.nextInt();
-						int wholesaleCost = inventory.nextInt();
-						
-						inventoryArray.add(new Item(sku, name, amount, retailCost, wholesaleCost));
-					}
-				
-				for(Item i : inventoryArray)
-					{
-						System.out.println(i.getName() + " " + i.getNumber() + " " + i.getRetailCost());
-					}
-			}
+		
 	}
