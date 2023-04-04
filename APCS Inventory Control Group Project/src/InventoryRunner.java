@@ -12,6 +12,7 @@ public class InventoryRunner
 		
 		public static void main(String[] args) throws IOException
 			{
+				InventoryList.fillList();
 				select();
 			}
 		
@@ -25,7 +26,9 @@ public class InventoryRunner
 			
 			if(intInput == 1)
 				{
-					Customer.inventory();
+					System.out.println("Welcome valued customer!");
+					input = userInput.nextLine();
+					Customer.inventorySearch();
 				}
 			else if(intInput == 2)
 				{

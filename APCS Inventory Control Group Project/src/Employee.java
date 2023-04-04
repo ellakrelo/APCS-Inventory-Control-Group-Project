@@ -14,7 +14,6 @@ public class Employee
 		
 		public static void employeeMainMenu() throws IOException
 		{
-			InventoryList.fillList();
 			
 			System.out.println("Welcome valued employee! What would you like to do next?\n\t 1)List Inventory\n\t 2)View the accounting module\n\t 3)Log Out");
 			intInput = userIntInput.nextInt();
@@ -26,7 +25,7 @@ public class Employee
 					
 					for(Item i : InventoryList.list)
 						{
-							System.out.printf(index + ") " + i.getSku() + ": " + i.getName() + " Units Available: " + i.getNumber() + " Unit Cost: $" + i.getUnitCost() + " Retail Cost: " + i.getRetailCost());
+							System.out.println(index + ") " + i.getSku() + ": " + i.getName() + " Units Available: " + i.getNumber() + " Unit Cost: $" + i.getUnitCost() + " Retail Cost: " + i.getRetailCost());
 							index++;
 						}
 					input = userInput.nextLine();
