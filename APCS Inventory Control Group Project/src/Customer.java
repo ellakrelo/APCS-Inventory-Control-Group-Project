@@ -119,7 +119,7 @@ public class Customer
 						InventoryList.list.get(i).getRetailCost(), InventoryList.list.get(i).getUnitCost()));
 				
 				InventoryList.list.get(i).setNumber(InventoryList.list.get(i).getNumber() -1);
-				// write in file
+				InventoryList.writeToList();
 				
 				System.out.println(shoppingCart.get(itemsPurchased).getName() + " has been added to your shopping cart.");
 				itemsPurchased++;
@@ -178,6 +178,7 @@ public class Customer
 					}
 				else 
 					{
+						System.out.println();
 						InventoryRunner.main(null);
 					}
 			}
