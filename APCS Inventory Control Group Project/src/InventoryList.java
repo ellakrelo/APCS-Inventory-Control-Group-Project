@@ -2,8 +2,10 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -22,11 +24,33 @@ public class InventoryList
 	    	{
 	        int sku = file.nextInt();
 	        String name = file.next();
-	        String editName = name.replaceAll("[\\s\\-()]", " ");
+	        
 	        int number = file.nextInt();
 	        int retailCost = file.nextInt();
 	        int manCost = file.nextInt();
-	        list.add(new Item(sku, editName, number, retailCost, manCost));
+	        list.add(new Item(sku, name, number, retailCost, manCost));
 	        }
+		}
+
+	public static void writeToList() throws IOException
+		{
+			BufferedWriter bw = new BufferedWriter(new FileWriter("groupProject.txt"));
+			bw.write("10");
+			bw.newLine();
+			
+			for(Item x : InventoryList.list)
+				{
+					String sku = String.valueOf(x.getSku()) + "";
+					String name = x.getName();
+					String number = String.valueOf(x.getNumber()) + "";
+					String retailCost = String.valueOf(x.getRetailCost()) + "";
+					String unitCost = String.valueOf(x.getUnitCost()) + "";
+				
+					bw.write(sku + " " + name + " "  + number + " " + retailCost + " " + unitCost);
+				
+					bw.newLine();
+				}
+			bw.close();
+		
 		}
 	}
