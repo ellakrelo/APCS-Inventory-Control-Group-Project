@@ -11,7 +11,6 @@ public class Employee
 		static int intInput = 0;
 		static String input = "";
 		
-		
 		public static void employeeMainMenu() throws IOException
 		{
 			
@@ -50,7 +49,7 @@ public class Employee
 					}
 					System.out.println("");
 					System.out.println();
-					InventoryRunner.select();
+					Main.select();
 				}
 			else
 				{
@@ -62,11 +61,33 @@ public class Employee
 				}
 		}
 
-		private static void accountingModule()
+		private static void accountingModule() throws IOException
 			{
+        int bottomLine = 5000;
+      System.out.println("Costs ------------------------------------------------------------------------------------");
+        for(AccountingItem i : AccountingSystem.accountList)
+          {
+            if(i.getAccountCost() < 0)
+            {
+              System.out.println("Restock of " + i.getName());
+              System.out.println("Cost: " + i.getAccountCost());
+              bottomLine += i.getAccountCost();
+              System.out.println();
+            }
+            else
+            {
+              System.out.println("Customer Purchase: " + i.getName());
+              System.out.println("Profit: " + i.getAccountCost());
+              bottomLine += i.getAccountCost();
+              System.out.println();
+            }
+            
+            
+          }
 
-				//tracks expenses 
-				//show bottom line
+        System.out.println("Bottom Line : $" + bottomLine + "\n------------------------------------------------------------------------------------");
+        input = userInput.nextLine();
+				employeeMainMenu();
 			}
 
 		
