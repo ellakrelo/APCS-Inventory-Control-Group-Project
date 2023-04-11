@@ -16,18 +16,18 @@ public class Customer
 				int i = 0;
 				for(i = 0; i < InventoryList.list.size(); i++)
 					{
-					System.out.println("#" + i + ": " + InventoryList.list.get(i).getName() + " -- $" + InventoryList.list.get(i).getRetailCost());
+					System.out.println("" + i + ") " + InventoryList.list.get(i).getName() + " -- $" + InventoryList.list.get(i).getRetailCost());
 					System.out.println("Quantity: " + InventoryList.list.get(i).getNumber() );
 					System.out.println("SKU:" + InventoryList.list.get(i).getSku());
 					System.out.println("------------------------------------------------------------------------------------");
 					
 					}
-				System.out.println(i + ". Search Feature");
+				System.out.println(i + ") Search Feature");
 				System.out.println();
 				System.out.println("Input: ");
 				int search = userInput.nextInt();
 				
-				if(search > 0 && search < i)
+				if(search >= 0 && search < i)
 					{
 						addToShoppingCart(search);
 					}
@@ -113,19 +113,20 @@ public class Customer
 		
 		public static void addToShoppingCart(int i) throws IOException
 			{
-				
-				
+        int profit = InventoryList.list.get(i).getRetailCost() - InventoryList.list.get(i).getUnitCost();
 				shoppingCart.add(new Item(InventoryList.list.get(i).getSku(), InventoryList.list.get(i).getName(), InventoryList.list.get(i).getNumber(), 
-						InventoryList.list.get(i).getRetailCost(), InventoryList.list.get(i).getUnitCost()));
-				
+InventoryList.list.get(i).getRetailCost(), InventoryList.list.get(i).getUnitCost(), InventoryList.list.get(i).getIdealStockNumber()));
+
+        AccountingSystem.accountList.add(new AccountingItem(InventoryList.list.get(i).getName(), profit));
+        
 				InventoryList.list.get(i).setNumber(InventoryList.list.get(i).getNumber() -1);
 				InventoryList.writeToList();
-				
+        AccountingSystem.writeToAccount();
 				System.out.println(shoppingCart.get(itemsPurchased).getName() + " has been added to your shopping cart.");
 				itemsPurchased++;
 				
 				
-				System.out.println("Would you like to continue shopping? (1) Yes (2) No");
+				System.out.println("Would you like to continue shopping? \n\t 1) Yes \n\t 2) No");
 				int input = userInput.nextInt();
 				if(input == 1)
 					{
@@ -169,8 +170,10 @@ public class Customer
 				catch(InterruptedException e)
 					{
 					}
-				
-				System.out.println("Would you like to go shopping again? (1) Yes (2) No");
+
+        InventoryList.stockCheck();
+        
+				System.out.println("Would you like to go shopping again? \n\t1) Yes \n\t2) No");
 				int input = userInput.nextInt();
 				if(input == 1)
 					{
@@ -179,9 +182,9 @@ public class Customer
 				else 
 					{
 						System.out.println();
-						InventoryRunner.main(null);
+            //change to InventoryRunner later
+						
+            InventoryRunner.select();
 					}
 			}
-	
-		
-	}
+    }
