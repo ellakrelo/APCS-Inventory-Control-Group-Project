@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.BufferedWriter;
@@ -12,8 +10,9 @@ import java.io.IOException;
 public class InventoryList
 	{
 
-	static Scanner file;
+  static Scanner file;
 	static ArrayList<Item> list = new ArrayList<Item>();
+  
 	
 	public static void fillList() throws IOException
 		{
@@ -28,7 +27,8 @@ public class InventoryList
 	        int number = file.nextInt();
 	        int retailCost = file.nextInt();
 	        int manCost = file.nextInt();
-	        list.add(new Item(sku, name, number, retailCost, manCost));
+          int stockNum = file.nextInt();
+	        list.add(new Item(sku, name, number, retailCost, manCost, stockNum));
 	        }
 		}
 
@@ -45,12 +45,31 @@ public class InventoryList
 					String number = String.valueOf(x.getNumber()) + "";
 					String retailCost = String.valueOf(x.getRetailCost()) + "";
 					String unitCost = String.valueOf(x.getUnitCost()) + "";
+
+          String stockNum = String.valueOf(x.getIdealStockNumber()) + "";
 				
-					bw.write(sku + " " + name + " "  + number + " " + retailCost + " " + unitCost);
+					bw.write(sku + " " + name + " "  + number + " " + retailCost + " " + unitCost + " " + stockNum);
 				
 					bw.newLine();
 				}
 			bw.close();
 		
 		}
-	}
+	
+
+public static void stockCheck() throws IOException
+  {
+  for(int i = 0; i < list.size(); i++)
+    {
+      if(list.get(i).getNumber() <= 5)
+      {
+        int difference = (list.get(i).getIdealStockNumber() - list.get(i).getNumber()) * list.get(i).getRetailCost();
+          list.get(i).setNumber(list.get(i).getIdealStockNumber());
+
+        AccountingSystem.accountList.add(new AccountingItem(list.get(i).getName(), 0 - difference));
+      }
+    }
+
+    writeToList();
+  }
+}
