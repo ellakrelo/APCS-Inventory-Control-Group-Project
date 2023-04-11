@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.*;
 
-public class InventoryRunner
+public class Main
 	{
 
 		static Scanner userInput = new Scanner(System.in);
@@ -13,6 +13,7 @@ public class InventoryRunner
 		public static void main(String[] args) throws IOException
 			{
 				InventoryList.fillList();
+        AccountingSystem.fillAccounts();
 				select();
 			}
 		
